@@ -8,13 +8,13 @@ def operationSum(x_aux,list_w):
     return y_1
 
 
-def new_weights(list_x, list_w, factor_aprendizaje,error,contador):
+def new_weights(list_x, list_w, n,error,count):
     lista_new_w = []
 
     for i in range(0,5):  
-        formula_1 = factor_aprendizaje * error * list_x[contador][i]
-        formula_3  = list_w[i]  + formula_1
-        w_aux = formula_3
+        multiplication = n * error * list_x[count][i]
+        sum_multiplication  = list_w[i]  + multiplication
+        w_aux = sum_multiplication
         lista_new_w.append(w_aux)
         w_aux = 0
 

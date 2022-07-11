@@ -15,7 +15,7 @@ def perceptron_main(list_test_x):
         valor_ran = round(random(),4)
         list_w.append(valor_ran)
 
-    factor_aprendizaje = round(random(),4)
+    n = round(random(),4)
 
     while contador < len(list_x):
         y_calculada_aux = operationSum(list_x[contador], list_w)
@@ -30,22 +30,22 @@ def perceptron_main(list_test_x):
         if error == 0:
             contador = contador + 1
         else: 
-            lista_w_new = new_weights(list_x, list_w, factor_aprendizaje,error,contador)
+            lista_w_new = new_weights(list_x, list_w, n,error,contador)
             list_w.clear()
             list_w = lista_w_new
             contador = 0
             print(f'INITIAL WEIGHTS: {list_w}')
         
-    resultado = test(list_test_x, list_w, factor_aprendizaje)
+    resultado = test(list_test_x, list_w, n)
     
     return resultado
           
 
 
-def test(list_test_x, list_w, factor_aprendizaje):
+def test(list_test_x, list_w, n):
     resultado = ''
     print( f'FINAL WEIGHTS: {list_w}')
-    print(f'N: {factor_aprendizaje}')
+    print(f'N: {n}')
 
     respuesta = operationSum(list_test_x,list_w)
 
