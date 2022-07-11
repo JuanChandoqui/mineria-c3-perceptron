@@ -9,31 +9,33 @@ def perceptron_main(list_test_x):
     list_x, list_y = readCsv('./entrenamiento.csv')
    
     list_w = []
-    contador = 0
+    count = 0
 
+    #pesos iniciales
     for i in range(5):
         valor_ran = round(random(),4)
         list_w.append(valor_ran)
-
+    
+    #tasa de aprendizaje
     n = round(random(),4)
 
-    while contador < len(list_x):
-        y_calculada_aux = operationSum(list_x[contador], list_w)
+    while count < len(list_x):
+        y_calculada_aux = operationSum(list_x[count], list_w)
        
         if y_calculada_aux >= 0:
              y_calculada = 1
         elif y_calculada_aux < 0:
             y_calculada = -1
 
-        error = list_y[contador] - y_calculada
+        error = list_y[count] - y_calculada
 
         if error == 0:
-            contador = contador + 1
+            count = count + 1
         else: 
-            lista_w_new = new_weights(list_x, list_w, n,error,contador)
+            lista_w_new = new_weights(list_x, list_w, n,error,count)
             list_w.clear()
             list_w = lista_w_new
-            contador = 0
+            count = 0
             print(f'INITIAL WEIGHTS: {list_w}')
         
     resultado = test(list_test_x, list_w, n)
